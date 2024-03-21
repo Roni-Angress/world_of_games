@@ -17,5 +17,5 @@ def start_play():
         game_choice = input("Please enter a valid option (1, 2, or 3): ")
 
     difficulty_level = input("Select a difficulty level between 1 and 5: ")
-    while not difficulty_level.isdigit() or not (1 <= int(difficulty_level) <= 5):
+    while difficulty_level not in ["1", "2", "3", "4", "5"]:
         difficulty_level = input("Please enter a numeric value between 1 and 5: ")
