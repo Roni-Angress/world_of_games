@@ -1,16 +1,21 @@
 def welcome():
     # This function takes a person's name as input and displays a personalized welcome message
     username = input("What's your name? ")
-    print (f'Hi {username} and welcome to the World of Games: The Epic Journey')
+    print(f"Hi {username}! Welcome to the World of Games: The Epic Journey")
 
 
 def start_play():
     # This function presents a list of available games to the user
-    intro_text ="Please choose a game to play:\n1. Memory Game - a sequence of numbers will appear for 1 second and you have to guess it back.\n2. Guess Game - guess a number and see if you chose like the computer.\n3. Currency Roulette - try and guess the value of a random amount of USD in ILS\n"
+    intro_text = (
+        "Please choose a game to play:\n"
+        "1. Memory Game - A sequence of numbers will appear for 1 second, and you have to guess it back.\n"
+        "2. Guess Game - Guess a number and see if you chose like the computer.\n"
+        "3. Currency Roulette - Try to guess the value of a random amount of USD in ILS.\n"
+    )
     game_choice = input(intro_text)
-    while not game_choice.isnumeric() or int(game_choice) < 1 or int(game_choice) > 3:
-        game_choice = input("A correct numeric number is expected: ")
+    while game_choice not in ["1", "2", "3"]:
+        game_choice = input("Please enter a valid option (1, 2, or 3): ")
 
-    difficulty_level = input("select a difficulty level between 1 and 5:")
-    while not difficulty_level.isnumeric() or int(difficulty_level) < 1 or int(difficulty_level) > 3:
-        difficulty_level = input("A correct numeric number is expected: ")
+    difficulty_level = input("Select a difficulty level between 1 and 5: ")
+    while not difficulty_level.isdigit() or not (1 <= int(difficulty_level) <= 5):
+        difficulty_level = input("Please enter a numeric value between 1 and 5: ")
