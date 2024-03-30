@@ -15,7 +15,9 @@ def start_play():
     game_choice = input(intro_text)
     while game_choice not in ["1", "2", "3"]:
         game_choice = input("Please enter a valid option (1, 2, or 3): ")
+    game_choice = int(game_choice)
 
     difficulty_level = input("Select a difficulty level between 1 and 5: ")
     while difficulty_level not in ["1", "2", "3", "4", "5"]:
         difficulty_level = input("Please enter a numeric value between 1 and 5: ")
+    difficulty_level = int(difficulty_level)
