@@ -1,3 +1,10 @@
+import guess_game
+import memory_game
+
+
+# def validate_input():
+# # the function receives three variables: inp, start and end, and will check whether inp is in the range of start-end
+#     pass
 def welcome():
     # This function takes a person's name as input and displays a personalized welcome message
     username = input("What's your name? ")
@@ -21,6 +28,13 @@ def start_play():
     while difficulty_level not in ["1", "2", "3", "4", "5"]:
         difficulty_level = input("Please enter a numeric value between 1 and 5: ")
     difficulty_level = int(difficulty_level)
+
+    if game_choice == 1:
+        memory_game.play(difficulty_level)
+    if game_choice == 2:
+        guess_game.play(difficulty_level)
+
+
 
 # Upon receiving the user's selection of the desired game and preferred difficulty level,
 # the function will initiate the corresponding game function with the specified difficulty.
