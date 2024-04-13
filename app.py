@@ -36,11 +36,4 @@ def start_play():
         guess_game.play(difficulty_level)
     if game_choice == 3:
         currency_roulette_game.play(difficulty_level)
-
-
-
-
-# Upon receiving the user's selection of the desired game and preferred difficulty level,
-# the function will initiate the corresponding game function with the specified difficulty.
-# As an illustration, if the user opts for the 'memory_game' and selects a difficulty of 3,
-# the `play()` function from the 'memory_game' module will be invoked with a difficulty level of 3.
+        

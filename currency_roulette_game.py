@@ -1,4 +1,4 @@
-from typing import Tuple, Any
+from typing import Any
 import requests
 import random
 
@@ -64,8 +64,7 @@ def compare_results(lower_bound, upper_bound, guess) -> bool:
     return lower_bound <= guess <= upper_bound
 
 
-
-def play(difficulty :int) -> bool:
+def play(difficulty: int) -> bool:
     random_generated_number = generate_random_number()
     print(f'The generated number is {random_generated_number} USD.')
 
@@ -75,5 +74,3 @@ def play(difficulty :int) -> bool:
     win = compare_results(lower_bound, upper_bound, guess)
     print(win)
     return win
-
-
