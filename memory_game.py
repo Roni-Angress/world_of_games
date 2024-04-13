@@ -47,7 +47,7 @@ def is_list_equal(list_a: list[int], list_b: list[int]) -> bool:
     return list_a == list_b
 
 
-def play(difficulty: int) -> None:
+def play(difficulty: int) -> bool:
     """
     Executes the game by invoking the functions above and prints the result.
     """
@@ -58,3 +58,4 @@ def play(difficulty: int) -> None:
     user_input = get_list_from_user(difficulty)
     win = is_list_equal(generated_numbers, user_input)
     print(win)
+    return win

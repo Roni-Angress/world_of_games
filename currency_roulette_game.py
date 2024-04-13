@@ -65,7 +65,7 @@ def compare_results(lower_bound, upper_bound, guess) -> bool:
 
 
 
-def play(difficulty):
+def play(difficulty :int) -> bool:
     random_generated_number = generate_random_number()
     print(f'The generated number is {random_generated_number} USD.')
 

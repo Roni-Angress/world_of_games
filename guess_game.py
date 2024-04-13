@@ -48,7 +48,7 @@ def compare_results(a, b):
     return a == b
 
 
-def play(difficulty):
+def play(difficulty: int) -> bool:
     """
     Initiates the game by generating a secret number, getting user's guess, and comparing the results.
 
