@@ -15,7 +15,7 @@ acceptable range is 7 NIS.
 
 def validate_number_input(message: str) -> float:
     """
-    Prompts the user to enter an integer within the range of 1 to 101.
+    Prompts the user to enter a number.
     The function returns the user input as a float.
     """
     while True:
