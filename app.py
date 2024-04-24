@@ -1,6 +1,6 @@
-import guess_game
-import memory_game
-import currency_roulette_game
+from games import guess_game
+from games import memory_game
+from games import currency_roulette_game
 
 
 # def validate_input():
@@ -36,4 +36,3 @@ def start_play():
         guess_game.play(difficulty_level)
     if game_choice == 3:
         currency_roulette_game.play(difficulty_level)
-        
