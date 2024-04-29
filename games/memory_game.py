@@ -1,6 +1,8 @@
 import random
 import os
 from time import sleep
+from games.utils import validate_int_input
+
 
 
 def generate_sequence(difficulty: int) -> list[int]:
@@ -11,20 +13,7 @@ def generate_sequence(difficulty: int) -> list[int]:
     return random_numbers
 
 
-def validate_number_input(message: str) -> int:
-    """
-    Prompts the user to enter an integer within the range of 1 to 101.
-    The function returns the user input as an integer.
-    """
-    while True:
-        try:
-            number = int(input(message))
-            if 1 <= number <= 101:
-                return number
-            else:
-                print("Number must be in the range of 1 - 101.")
-        except ValueError:
-            print("Invalid input. Please enter an integer.")
+
 
 
 def get_list_from_user(difficulty: int) -> list[int]:
@@ -35,7 +24,7 @@ def get_list_from_user(difficulty: int) -> list[int]:
     for i in range(difficulty):
         remaining_numbers = difficulty - len(user_input)
         msg = f'Please enter {remaining_numbers} more numbers in the range of 1 - 101: '
-        number = validate_number_input(msg)
+        number = validate_int_input(msg)
         user_input.append(number)
     return user_input
 

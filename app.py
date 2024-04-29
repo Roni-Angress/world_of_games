@@ -1,10 +1,11 @@
-from games import guess_game
-from games import memory_game
-from games import currency_roulette_game
+from games.currency_roulette_game import play as currency_roulette_game_play
+from games.memory_game import play as memory_game_play
+from games.guess_game import play as guess_game_play
+from games.utils import validate_int_input
 
 
 # def validate_input():
-# # the function receives three variables: inp, start and end, and will check whether inp is in the range of start-end
+# the function receives three variables: inp, start and end, and will check whether inp is in the range of start-end
 #     pass
 def welcome():
     # This function takes a person's name as input and displays a personalized welcome message
@@ -20,19 +21,19 @@ def start_play():
         "2. Guess Game - Guess a number and see if you chose like the computer.\n"
         "3. Currency Roulette - Try to guess the value of a random amount of USD in ILS.\n"
     )
-    game_choice = input(intro_text)
-    while game_choice not in ["1", "2", "3"]:
-        game_choice = input("Please enter a valid option (1, 2, or 3): ")
-    game_choice = int(game_choice)
 
-    difficulty_level = input("Select a difficulty level between 1 and 5: ")
-    while difficulty_level not in ["1", "2", "3", "4", "5"]:
-        difficulty_level = input("Please enter a numeric value between 1 and 5: ")
-    difficulty_level = int(difficulty_level)
+    game_choice = validate_int_input(intro_text)
+    while not 1 <= game_choice <= 3:
+        game_choice = validate_int_input("Only a number from 1 to 3 is allowed: ")
+
+    difficulty_level = validate_int_input("Select a difficulty level between 1 and 5: ")
+    while not 1 <= difficulty_level <= 5:
+        difficulty_level = validate_int_input("Please enter a numeric value between 1 and 5: ")
+
 
     if game_choice == 1:
-        memory_game.play(difficulty_level)
+        memory_game_play(difficulty_level)
     if game_choice == 2:
-        guess_game.play(difficulty_level)
+        guess_game_play(difficulty_level)
     if game_choice == 3:
-        currency_roulette_game.play(difficulty_level)
+        currency_roulette_game_play(difficulty_level)

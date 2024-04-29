@@ -1,4 +1,4 @@
-def validate_number_input(message: str) -> float:
+def validate_float_input(message: str) -> float:
     """
     Prompts the user to enter a number.
     The function returns the user input as a float.
@@ -19,10 +19,6 @@ def validate_int_input(message: str) -> int:
     while True:
         user_input = input(message)
         if user_input.isdigit():  # Check if input is composed only of digits
-            number = int(user_input)
-            if 1 <= number <= 101:  # Check if number is within the desired range
-                return number
-            else:
-                print("Number must be in the range of 1 - 101.")
+            return int(user_input)
         else:
             print("Invalid input. Please enter an integer.")

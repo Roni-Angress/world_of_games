@@ -1,4 +1,5 @@
 import random
+from games.utils import validate_int_input
 
 
 def generate_number(difficulty):
@@ -24,14 +25,9 @@ def get_guess_from_user(difficulty):
     Returns:
         int: The user's guess.
     """
-    range_of_answers = list(map(str, range(difficulty + 1)))
     msg = f'Welcome to the Guess Game!\nPlease enter a number within the range of 0 to {difficulty}: '
-    while True:
-        guess = input(msg)
-        if guess in range_of_answers:
-            return int(guess)
-        else:
-            print(f"Only a number from 0 to {difficulty} is an acceptable input.")
+    guess = validate_int_input(msg)
+    return guess
 
 
 def compare_results(a, b):

@@ -1,6 +1,9 @@
 from typing import Any
-import requests
+# import requests
 import random
+from games.utils import validate_float_input
+from currency_converter import CurrencyConverter
+
 
 """
 The Currency Roulette Game module utilizes a free currency API(package) to retrieve the current
@@ -12,11 +15,10 @@ the difficulty level is 3, the acceptable difference is 10 - 3, which equals 7 N
 acceptable range is 7 NIS.
 """
 
-
-def validate_number_input(message: str) -> float:
+def validate_input (message: str) ->float:
     """
-    Prompts the user to enter a number.
-    The function returns the user input as a float.
+        Prompts the user to enter a number.
+        The function returns the user input as a float.
     """
     while True:
         try:
@@ -24,7 +26,6 @@ def validate_number_input(message: str) -> float:
             return number
         except ValueError:
             print("Invalid input. Please enter a number.")
-
 
 def generate_random_number() -> int:
     return random.randint(1, 100)
@@ -36,13 +37,14 @@ def get_money_interval(difficulty: int, generated_number: int) -> tuple[float | 
     interval for the correct answer based on the game's difficulty level.
     """
     # Retrieve the exchange rate from USD to ILS from a currency API
-    response = requests.get('https://v6.exchangerate-api.com/v6/55d4e75c2615a6280f2aca69/latest/USD')
-    data = response.json()
-    exchange_rate = data['conversion_rates']["ILS"]
+    # response = requests.get('https://v6.exchangerate-api.com/v6/55d4e75c2615a6280f2aca69/latest/USD')
+    # data = response.json()
+    # exchange_rate = data['conversion_rates']["ILS"]
 
     # Calculate the interval for the correct answer based on the game's difficulty level
+    c = CurrencyConverter()
     acceptable_range = 10 - difficulty
-    value_after_exchange = generated_number * exchange_rate
+    value_after_exchange = c.convert(generated_number, 'USD', 'ILS')
 
     lower_bound = value_after_exchange - acceptable_range
     upper_bound = value_after_exchange + acceptable_range
@@ -56,7 +58,7 @@ def get_guess_from_user():
     specified amount in USD.
     """
     message = "Guess the value converted to ILS.\nWhat is your guess? "
-    guess = validate_number_input(message)
+    guess = validate_float_input(message)
     return guess
 
 
