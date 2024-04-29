@@ -15,17 +15,6 @@ the difficulty level is 3, the acceptable difference is 10 - 3, which equals 7 N
 acceptable range is 7 NIS.
 """
 
-def validate_input (message: str) ->float:
-    """
-        Prompts the user to enter a number.
-        The function returns the user input as a float.
-    """
-    while True:
-        try:
-            number = float(input(message))
-            return number
-        except ValueError:
-            print("Invalid input. Please enter a number.")
 
 def generate_random_number() -> int:
     return random.randint(1, 100)
