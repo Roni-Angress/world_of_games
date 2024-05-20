@@ -1,3 +1,13 @@
+import os
+
+SCORES_FILE_NAME = "Scores.txt"
+BAD_RETURN_CODE = None
+
+
+def screen_cleaner():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
 def validate_float_input(message: str) -> float:
     """
     Prompts the user to enter a number.

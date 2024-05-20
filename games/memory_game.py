@@ -1,7 +1,7 @@
 import random
 import os
 from time import sleep
-from games.utils import validate_int_input
+from games.utils import validate_int_input, screen_cleaner
 
 
 
@@ -43,7 +43,7 @@ def play(difficulty: int) -> bool:
     generated_numbers = generate_sequence(difficulty)
     print(generated_numbers)
     sleep(0.7)
-    os.system('cls' if os.name == 'nt' else 'clear')
+    screen_cleaner()
     user_input = get_list_from_user(difficulty)
     win = is_list_equal(generated_numbers, user_input)
     print(win)
