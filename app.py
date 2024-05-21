@@ -2,6 +2,7 @@ from games.currency_roulette_game import play as currency_roulette_game_play
 from games.memory_game import play as memory_game_play
 from games.guess_game import play as guess_game_play
 from games.utils import validate_int_input
+from games.score import add_score as add_score
 
 
 # def validate_input():
@@ -30,10 +31,16 @@ def start_play():
     while not 1 <= difficulty_level <= 5:
         difficulty_level = validate_int_input("Please enter a numeric value between 1 and 5: ")
 
-
+    win = None
     if game_choice == 1:
-        memory_game_play(difficulty_level)
+        win = memory_game_play(difficulty_level)
     if game_choice == 2:
-        guess_game_play(difficulty_level)
+        win = guess_game_play(difficulty_level)
     if game_choice == 3:
-        currency_roulette_game_play(difficulty_level)
+        win = currency_roulette_game_play(difficulty_level)
+
+    if win:
+        add_score(difficulty_level)
+
+
+
