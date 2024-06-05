@@ -1,5 +1,5 @@
 import os
-import utils
+from . import utils
 
 scores_file_path = utils.SCORES_FILE_NAME
 
@@ -17,8 +17,13 @@ def get_score() -> int:
             first_line = scores_file.readline().strip()
             if first_line.isdigit():
                 current_score = int(first_line)
+                BAD_RETURN_CODE = None # There is no error
             else:
                 print(f"Warning: Invalid score found in {scores_file_path}. Starting from 0.")
+                utils.BAD_RETURN_CODE = 500 # invalid score found in the file
+
+    else:
+        utils.BAD_RETURN_CODE = 400 # file doesn't exist
     return current_score
 
 
@@ -39,3 +44,4 @@ def add_score(difficulty: int):
     # Write the new score back to the file. If the file does not exist it will be created regardless.
     with open(scores_file_path, 'w') as scores_file:
         scores_file.write(str(new_score))
+
