@@ -3,3 +3,11 @@
 # Ignore specific file
 Scores.txt
 
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environment directory
+venv/
+.env/
