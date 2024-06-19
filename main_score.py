@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import games.score as score
+import score as score
 import utils
 
 """This file’s sole purpose is to serve the user’s score currently in the scores.txt file over HTTP with HTML.

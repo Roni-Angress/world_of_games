@@ -2,7 +2,7 @@ from games.currency_roulette_game import play as currency_roulette_game_play
 from games.memory_game import play as memory_game_play
 from games.guess_game import play as guess_game_play
 from games.utils import validate_int_input
-from games.score import add_score as add_score
+from score import add_score as add_score
 
 
 # def validate_input():

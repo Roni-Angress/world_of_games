@@ -1,5 +1,5 @@
 import os
-from . import utils
+from games import utils
 
 scores_file_path = utils.SCORES_FILE_NAME
 
