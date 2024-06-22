@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import sys
 """
 Functions
 1. test_scores_service - it’s purpose is to test our web service. It will get the application
@@ -9,9 +10,10 @@ check that it is a number between 1 to 1000 and return a boolean value if it’s
 code if the tests failed and 0 if they passed.
 """
 
-def test_scores_service(URL) -> bool:
+
+def test_scores_service(url: str) -> bool:
     driver = webdriver.Chrome()
-    driver.get(URL)
+    driver.get(url)
 
     score_element = driver.find_element(By.XPATH, '//*[@id="score"]')
     score_text = score_element.text
@@ -23,7 +25,8 @@ def test_scores_service(URL) -> bool:
         return False
 
 
-def main_function():
-    pass
-
-test_scores_service("http://127.0.0.1:5000")
+def main_function(url):
+    if test_scores_service(url):
+        return sys.exit(0)
+    else:
+        return sys.exit(-1)
