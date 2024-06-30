@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Checkout SCM') {
             steps {
-                echo 'Hello World'
+                git branch: '**/main', url: 'https://github.com/Roni-Angress/world_of_games.git'
             }
         }
     }
