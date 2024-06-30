@@ -11,7 +11,7 @@ code if the tests failed and 0 if they passed.
 """
 
 
-def test_scores_service(url: str) -> bool:
+def test_scores_service(url="127.0.0.1:5000") -> bool:
     driver = webdriver.Chrome()
     driver.get(url)
 
