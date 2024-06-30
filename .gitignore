@@ -1,7 +1,6 @@
 # Ignore all .log files
 *.log
-# Ignore specific file
-Scores.txt
+
 
 # Ignore Python bytecode files
 *.pyc
