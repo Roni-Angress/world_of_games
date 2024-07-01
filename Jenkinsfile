@@ -9,13 +9,15 @@ pipeline {
         }
 
         stage('Install/Update Docker'){
-            sh 'apt-get update'
-            sh 'apt-get install -y docker.io'
-            sh 'apt-get install -y curl'
-            sh 'curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose'
-            sh 'chmod +x /usr/local/bin/docker-compose'
+            sh '''
+            apt-get update
+            apt-get install -y docker.io
+            apt-get install -y curl
+            curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            chmod +x /usr/local/bin/docker-compose
+            '''
         }
-        
+
         stage('Build and run') {
             steps {
                 sh 'docker-compose up --build -d'
