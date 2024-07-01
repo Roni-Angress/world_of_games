@@ -15,6 +15,7 @@ pipeline {
                         sh 'echo "Building..."'
                         sh 'docker-compose up -d'
                     }
+                } // <-- Added missing closing brace for 'script'
             }
         }
     }
