@@ -25,14 +25,14 @@ pipeline {
     stage('Clone') {
       steps {
         container('docker') {
-          git branch: 'main', changelog: false, poll: false, url: 'https://mohdsabir-cloudside@bitbucket.org/mohdsabir-cloudside/java-app.git'
+          git branch: 'main', url: 'https://github.com/Roni-Angress/world_of_games.git'
         }
       }
     }  
-    stage('Build-Jar-file') {
+    stage('Build-and-Run') {
       steps {
         container('docker') {
-          sh 'ocker-compose up --build'
+          sh 'docker-compose up --build'
           }
          }
         }
