@@ -1,22 +1,40 @@
 pipeline {
-    agent any
-
-    stages {
-        stage('Checkout SCM') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Roni-Angress/world_of_games.git'
-            }
+  agent {
+    kubernetes {
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        spec:
+          containers:
+          - name: docker
+            image: docker:latest
+            command:
+            - cat
+            tty: true
+            volumeMounts:
+             - mountPath: /var/run/docker.sock
+               name: docker-sock
+          volumes:
+          - name: docker-sock
+            hostPath:
+              path: /var/run/docker.sock    
+        '''
+    }
+  }
+  stages {
+    stage('Clone') {
+      steps {
+        container('docker') {
+          git branch: 'main', changelog: false, poll: false, url: 'https://mohdsabir-cloudside@bitbucket.org/mohdsabir-cloudside/java-app.git'
         }
-
-        stage('Build and run') {
-            steps {
-                script {
-                    docker.build('world_of_games-web:latest').inside {
-                        sh 'echo "Building..."'
-                        sh 'docker-compose up -d'
-                    }
-                } // <-- Added missing closing brace for 'script'
-            }
+      }
+    }  
+    stage('Build-Jar-file') {
+      steps {
+        container('docker') {
+          sh 'ocker-compose up --build'
+          }
+         }
         }
     }
 }
