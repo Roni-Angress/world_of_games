@@ -10,7 +10,11 @@ pipeline {
 
         stage('Build and run') {
             steps {
-                sh 'docker --version'
+                script {
+                    docker.build('world_of_games-web:latest').inside {
+                        sh 'echo "Building..."'
+                        sh 'docker-compose up -d'
+                    }
             }
         }
     }
