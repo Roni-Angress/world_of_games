@@ -11,7 +11,7 @@ code if the tests failed and 0 if they passed.
 """
 
 
-def test_scores_service(url="127.0.0.1:5000") -> bool:
+def test_scores_service(url="127.0.0.1:8777") -> bool:
     driver = webdriver.Chrome()
     driver.get(url)
 
@@ -30,3 +30,5 @@ def main_function(url):
         return sys.exit(0)
     else:
         return sys.exit(-1)
+
+main_function('http://localhost:8777/')
