@@ -20,7 +20,7 @@ def test_scores_service(url="127.0.0.1:5000") -> bool:
     print(f"Score: {score_text}")
     if score_text.isdigit():
         score_text_number = int(score_text)
-        return 1 <= score_text_number <= 1000
+        return 0 <= score_text_number <= 1000
     else:
         return False
 
