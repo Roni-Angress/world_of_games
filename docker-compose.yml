@@ -5,5 +5,5 @@ services:
     build:
       context: .
     ports:
-      - "5000:5000"
+      - "8777:8777"
     command: python main_score.py
