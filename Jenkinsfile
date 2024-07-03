@@ -18,12 +18,6 @@ pipeline {
                 sh 'docker compose up --detach'
             }
         }
-        
-        stage('Install-Dependencies') {
-            steps {
-                sh 'pip install --no-cache-dir -r requirements.txt'
-            }
-        }
 
         stage('Test') {
             steps {
