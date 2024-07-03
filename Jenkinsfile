@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build-and-Run') {
             steps {
-                git branch: 'main', url: 'https://github.com/Roni-Angress/world_of_games.git'
+                sh 'docker compose up --detach'
             }
         }
     }
