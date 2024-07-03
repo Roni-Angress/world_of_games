@@ -13,5 +13,17 @@ pipeline {
                 sh 'docker compose up --detach'
             }
         }
+
+        stage('Test') {
+            steps {
+                script {
+                    def status = sh(script: "python tests/e2e.py", returnStatus: true)
+                    if (status != 0) {
+                        error "Tests failed"
+                    }
+                }
+            }
+        }
+
     }
 }
