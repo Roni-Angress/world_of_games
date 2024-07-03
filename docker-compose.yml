@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   web:
+    container_name: "world_of_games-web-web"
     build:
       context: .
     ports:

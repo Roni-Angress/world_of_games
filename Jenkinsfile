@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    environment {
+        CONTAINER_NAME = 'world_of_games-web-web'
+        DOCKER_IMAGE_TAG = 'latest'
+    }
+
     stages {
         stage('Git-Pull') {
             steps {
@@ -13,11 +18,17 @@ pipeline {
                 sh 'docker compose up --detach'
             }
         }
+        
+        stage('Install-Dependencies') {
+            steps {
+                sh 'pip install --no-cache-dir -r requirements.txt'
+            }
+        }
 
         stage('Test') {
             steps {
                 script {
-                    def status = sh(script: "python3 tests/e2e.py", returnStatus: true)
+                    def status = sh(script: "docker exec ${CONTAINER_NAME} python tests/e2e.py", returnStatus: true)
                     if (status != 0) {
                         error "Tests failed"
                     }
