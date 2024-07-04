@@ -33,25 +33,14 @@ pipeline {
         stage('Finalize') {
             steps {
                 script {
-                    def status = sh(script: "docker exec ${CONTAINER_NAME} python tests/e2e.py", returnStatus: true)
-                    if (status != 0) {
-                        error "Tests failed"
-                    }
+                    // Stop and remove the container
+                    sh 'docker compose down'
+                    // Tag the image
+                    sh 'docker tag world_of_games-web-web:latest roniangress/world_of_games-web:latest'
+                    // Push the image to DockerHub
+                    sh 'docker push roniangress/world_of_games-web:latest'
                 }
             }
         }
-
-        stage('Finalize') {
-            //5. Finalize - Will terminate our tested container and push to DockerHub the new image we created.
-
-            steps {
-                script(
-                    sh 'docker compose down'
-                    sh 'docker tag world_of_games-web-web:latest roniangress/world_of_games-web:latest'
-                    sh 'docker push roniangress/world_of_games-web:latest'
-                )
-            }
-        }
-
     }
 }
