@@ -45,9 +45,11 @@ pipeline {
             //5. Finalize - Will terminate our tested container and push to DockerHub the new image we created.
 
             steps {
-                sh 'docker compose down'
-                sh 'docker tag world_of_games-web-web:latest roniangress/world_of_games-web:latest'
-                sh 'docker push roniangress/world_of_games-web:latest'
+                script(
+                    sh 'docker compose down'
+                    sh 'docker tag world_of_games-web-web:latest roniangress/world_of_games-web:latest'
+                    sh 'docker push roniangress/world_of_games-web:latest'
+                )
             }
         }
 
